@@ -1,0 +1,18 @@
+CREATE TABLE jacq_bookstore (id INTEGER PRIMARY KEY, item_name TEXT, price INTEGER, genre TEXT, inventory INTEGER, author TEXT);
+INSERT INTO jacq_bookstore VALUES (1, "Harry Potter and the Sorcerer's Stone", 40, "fantasy", 75, "J.K. Rowling");
+INSERT INTO jacq_bookstore VALUES (2, "Harry Potter and the Chamber of Secrets", 40, "fantasy", 34, "J.K. Rowling");
+INSERT INTO jacq_bookstore VALUES (3, "A Walk to Remember", 23, "romance", 12, "Nicholas Sparks");
+INSERT INTO jacq_bookstore VALUES (4, "The Patriots", 15, "Biography/Memoir", 6, "Winston Groom");
+INSERT INTO jacq_bookstore VALUES (5, "The Scarlet Letter", 23, "Fiction", 80, "Nathaniel Hawthorne");
+INSERT INTO jacq_bookstore VALUES (6, "The Blind Side", 14, "Biography/Memoir", 3, "Michael Lewis");
+INSERT INTO jacq_bookstore VALUES (7, "Narnia: The Lion, The Witch, and The Wardrobe", 38, "Fantasy", 29, "C.S. Lewis");
+INSERT INTO jacq_bookstore VALUES (8, "Exiles", 13, "Mystery", 8, "Jane Harper");
+INSERT INTO jacq_bookstore VALUES (9, "Spare", 45, "Biography/Memoir", 104, "Prince Harry");
+INSERT INTO jacq_bookstore VALUES (10, "River Sing Me Home", 37, "Fiction", 48, "Eleanor Shearer");
+INSERT INTO jacq_bookstore VALUES (11, "The Drift", 10, "Mystery", 2, "C.J. Tudor");
+INSERT INTO jacq_bookstore VALUES (12, "Maame", 15, "Fiction", 33, "Jessica George");
+INSERT INTO jacq_bookstore VALUES (13, "Lessons in Chemistry", 12, "Fiction", 21, "Bonnie Garmus");
+INSERT INTO jacq_bookstore VALUES (14, "It Starts With Us", 25, "Romance", 56, "Colleen Hoover");
+INSERT INTO jacq_bookstore VALUES (15, "Next Time I Fall", 7, "Romance", 3, "Barbara Freethy");
+SELECT * FROM jacq_bookstore ORDER BY price;
+SELECT genre, AVG(price) AS avg_price_inventroy FROM jacq_bookstore GROUP BY genre;
