@@ -1,0 +1,44 @@
+/* Create table about the people and what they do here */
+CREATE TABLE movie_stars (id INTEGER PRIMARY KEY AUTOINCREMENT,
+name TEXT,
+age INTEGER);
+INSERT INTO movie_stars (name, age) VALUES ("Tom Felton", 35);
+INSERT INTO movie_stars (name, age) VALUES ("Emma Watson", 32);
+INSERT INTO movie_stars (name, age) VALUES ("Jensen Ackles", 44);
+INSERT INTO movie_stars (name, age) VALUES ("Jared Padalecki", 40);
+INSERT INTO movie_stars (name, age) VALUES ("Adam Sandler", 56);
+INSERT INTO movie_stars (name, age) VALUES ("Mila Kunis", 39);
+INSERT INTO movie_stars (name, age) VALUES ("Jane Fonda", 85);
+
+CREATE TABLE personal_facts (person_id INTEGER, gender TEXT, twitter_handle TEXT);
+INSERT INTO personal_facts (person_id, gender, twitter_handle) VALUES (1, "Male", "@tomfelton");
+INSERT INTO personal_facts (person_id, gender, twitter_handle) VALUES (2, "Female", "@emmawatson");
+INSERT INTO personal_facts (person_id, gender, twitter_handle) VALUES (3, "Male", "@jensenackles");
+INSERT INTO personal_facts (person_id, gender, twitter_handle) VALUES (4, "Male", "@jarpad");
+INSERT INTO personal_facts (person_id, gender, twitter_handle) VALUES (5, "Male", "@adamsandler");
+INSERT INTO personal_facts (person_id, gender) VALUES (6, "Female");
+INSERT INTO personal_facts (person_id, gender, twitter_handle) VALUES (7, "Female", "@janefonda");
+
+CREATE TABLE collaborations (title TEXT, person1_id INTEGER, person2_id INTEGER, year TEXT);
+INSERT INTO collaborations (title, person1_id, person2_id, year) VALUES ("Harry Potter", 1, 2, "2001-2011");
+INSERT INTO collaborations (title, person1_id, person2_id, year) VALUES ("Supernatural", 3, 4, "2005-2020");
+
+SELECT name, twitter_handle FROM movie_stars
+    LEFT OUTER JOIN personal_facts
+    ON movie_stars.id = personal_facts.person_id;
+    
+SELECT a.name, b.name, title FROM collaborations 
+    JOIN movie_stars a
+    ON a.id = collaborations.person1_id
+    JOIN movie_stars b
+    ON b.id = collaborations.person2_id;
+    
+SELECT name,
+    CASE
+        WHEN age BETWEEN 27 AND 42 THEN "MILLENNIAL"
+        WHEN age BETWEEN 43 AND 58 THEN "GEN X"
+        WHEN age BETWEEN 59 AND 77 THEN "BOOMERS"
+        WHEN age BETWEEN 78 AND 95 THEN "SILENT GENERATION"
+    END as "Generation"
+FROM movie_stars
+ORDER BY generation;
